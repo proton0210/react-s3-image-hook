@@ -1,6 +1,6 @@
 {
   "name": "react-s3-image-hook",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A React hook for fetching and displaying images from AWS S3",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
