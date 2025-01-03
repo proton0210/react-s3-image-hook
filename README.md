@@ -43,23 +43,7 @@ First, configure CORS for your S3 bucket. In your bucket permissions, add the fo
 
 Replace `https://your-domain.com` with your actual domain.
 
-### 2. Initialize S3 Client
-
-Create an S3 client instance in your application:
-
-```typescript
-import { createS3Client } from "react-s3-image-hook";
-
-const s3Client = createS3Client({
-  region: "your-aws-region",
-  credentials: {
-    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY!,
-  },
-});
-```
-
-### 3. Set up React Query
+### 2. Set up React Query
 
 Wrap your application with `QueryClientProvider`:
 
@@ -85,8 +69,17 @@ The simplest way to display S3 images:
 
 ```tsx
 import { S3Image } from "react-s3-image-hook";
+import { S3Client } from "@aws-sdk/client-s3";
 
 function MyComponent() {
+  const s3Client = new S3Client({
+    region: "ap-south-1",
+    credentials: {
+      accessKeyId: process.env.NEXT_PUBLIC_S3_READ_ACCESS! as string,
+      secretAccessKey: process.env.NEXT_PUBLIC_S3_READ_SECRET! as string,
+    },
+  });
+
   return (
     <div className="m-5">
       <S3Image
