@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import { S3Client } from "@aws-sdk/client-s3";
 import { useS3Image } from "../hooks/useS3Image";
